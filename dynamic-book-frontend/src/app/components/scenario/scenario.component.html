@@ -1,0 +1,97 @@
+<ng-container *ngIf="book; else noBook">
+  <section class="scenario-header">
+    <div class="title-group">
+      <h1>{{ book?.title }}</h1>
+      <p *ngIf="currentChapter">Chapter {{ currentChapter.number }} · {{ currentChapter.title }}</p>
+    </div>
+    <div class="export-group">
+      <button mat-raised-button color="accent" (click)="exportStory()" [disabled]="exportLoading">
+        <mat-icon>file_download</mat-icon>
+        <span>Export Story</span>
+      </button>
+      <mat-progress-spinner *ngIf="exportLoading" diameter="28" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </section>
+
+  <mat-card class="scenario-card">
+    <mat-card-title>Describe a What-If Scenario</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="scenario-input">
+        <mat-label>Your Scenario</mat-label>
+        <textarea
+          matInput
+          rows="4"
+          [(ngModel)]="scenarioText"
+          [placeholder]="scenarioPlaceholder"
+        ></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="generateStory()" [disabled]="generationLoading">
+        <mat-icon>auto_awesome</mat-icon>
+        <span>Generate Story</span>
+      </button>
+      <mat-progress-spinner *ngIf="generationLoading" diameter="28" mode="indeterminate"></mat-progress-spinner>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="story-grid">
+    <mat-card class="story-card">
+      <mat-card-title>Original Chapter</mat-card-title>
+      <mat-card-subtitle *ngIf="currentChapter">Chapter {{ currentChapter.number }}: {{ currentChapter.title }}</mat-card-subtitle>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="story-content">
+          <mat-progress-spinner *ngIf="chapterLoading" diameter="40" mode="indeterminate"></mat-progress-spinner>
+          <pre *ngIf="!chapterLoading">{{ originalText || 'Chapter content will appear here once loaded.' }}</pre>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="story-card">
+      <mat-card-title>Generated Storyline</mat-card-title>
+      <mat-card-subtitle *ngIf="scenarioText">Scenario: {{ scenarioText }}</mat-card-subtitle>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="story-content">
+          <mat-progress-spinner *ngIf="generationLoading" diameter="40" mode="indeterminate"></mat-progress-spinner>
+          <pre *ngIf="!generationLoading && generatedText">{{ generatedText }}</pre>
+          <p class="placeholder" *ngIf="!generationLoading && !generatedText">
+            Generate a storyline to see the AI-crafted alternative chapter here.
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="navigation">
+    <div class="chapter-nav">
+      <button mat-stroked-button (click)="navigate('previous')" [disabled]="!canGoPrevious">
+        <mat-icon>chevron_left</mat-icon>
+        <span>Previous</span>
+      </button>
+      <span class="chapter-indicator">
+        Chapter {{ currentChapter?.number || currentChapterIndex + 1 }} of {{ book?.chapters?.length || 0 }}
+      </span>
+      <button mat-stroked-button (click)="navigate('next')" [disabled]="!canGoNext">
+        <span>Next</span>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noBook>
+  <mat-card class="empty-state">
+    <mat-card-title>No book loaded</mat-card-title>
+    <mat-card-content>
+      <p>We couldn't find a book to display. Please upload a book and select a chapter from the Upload page.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="/upload">
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Go to Upload</span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

@@ -1,0 +1,39 @@
+# Node and Angular builds
+node_modules/
+dist/
+tmp/
+out-tsc/
+**/node_modules/
+**/dist/
+
+# Logs and diagnostics
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment files
+.env
+.env.*
+
+# IDE and editor metadata
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage and test output
+coverage/
+**/coverage/
+
+# Angular cache
+.angular/

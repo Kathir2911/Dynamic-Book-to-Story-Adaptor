@@ -1,0 +1,33 @@
+.footer {
+  margin-top: 48px;
+
+  mat-divider {
+    margin-bottom: 16px;
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  mat-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 8px;
+}

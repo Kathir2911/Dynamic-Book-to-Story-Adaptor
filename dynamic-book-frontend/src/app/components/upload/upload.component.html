@@ -1,0 +1,44 @@
+<section class="upload-container">
+  <mat-card>
+    <mat-card-title>Upload Your Book</mat-card-title>
+    <mat-card-subtitle>Supported format: PDF with clear chapter headings.</mat-card-subtitle>
+    <mat-card-content>
+      <p>Select a PDF file to parse chapters and prepare the story for scenario generation.</p>
+      <div class="file-input">
+        <input type="file" accept="application/pdf" (change)="onFileSelected($event)" />
+        <span class="file-name" *ngIf="selectedFile">{{ selectedFile.name }}</span>
+        <span class="file-name placeholder" *ngIf="!selectedFile">No file selected yet.</span>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="uploadBook()" [disabled]="!selectedFile || isUploading">
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Upload Book</span>
+      </button>
+      <mat-progress-spinner *ngIf="isUploading" mode="indeterminate" diameter="28"></mat-progress-spinner>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="book-summary" *ngIf="uploadedBook">
+    <mat-card-header>
+      <mat-card-title>{{ uploadedBook.title }}</mat-card-title>
+      <mat-card-subtitle *ngIf="uploadedBook.author">{{ uploadedBook.author }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="summary-text">{{ uploadedBook.chapters.length }} chapters detected:</p>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let chapter of uploadedBook.chapters">
+          <span mat-line>Chapter {{ chapter.number }}</span>
+          <span mat-line class="chapter-title">{{ chapter.title }}</span>
+        </a>
+      </mat-nav-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="accent" (click)="proceedToScenario()">
+        <mat-icon>auto_awesome</mat-icon>
+        <span>Proceed to Scenario Generator</span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

@@ -1,0 +1,50 @@
+.upload-container {
+  display: grid;
+  gap: 24px;
+}
+
+mat-card-title,
+mat-card-subtitle {
+  word-break: break-word;
+}
+
+.file-input {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  input[type='file'] {
+    max-width: 280px;
+  }
+
+  .file-name {
+    font-size: 14px;
+  }
+
+  .placeholder {
+    opacity: 0.6;
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  button mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.book-summary {
+  mat-nav-list {
+    max-height: 320px;
+    overflow: auto;
+  }
+
+  .chapter-title {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+}

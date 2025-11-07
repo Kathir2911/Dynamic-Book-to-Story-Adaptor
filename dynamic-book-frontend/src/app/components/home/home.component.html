@@ -1,0 +1,58 @@
+<section class="hero">
+  <mat-card class="hero-card">
+    <mat-card-header>
+      <div mat-card-avatar class="hero-icon">
+        <mat-icon color="primary">auto_stories</mat-icon>
+      </div>
+      <mat-card-title>Dynamic Book-to-Story Adaptor</mat-card-title>
+      <mat-card-subtitle>Reimagine your favorite stories through interactive, AI-assisted storytelling.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Upload a book, describe a "what-if" scenario, and instantly compare the original narrative with a fresh AI-crafted storyline. Discover new plot twists, explore alternate character arcs, and export the results for further inspiration.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" routerLink="/upload">
+        <mat-icon>cloud_upload</mat-icon>
+        <span>Upload Your Book</span>
+      </button>
+      <button mat-stroked-button color="primary" routerLink="/upload">
+        <mat-icon>play_circle</mat-icon>
+        <span>Try the Scenario Generator</span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+
+<section class="features">
+  <h2>How it Works</h2>
+  <div class="feature-grid">
+    <mat-card class="feature-card" *ngFor="let feature of features">
+      <mat-card-header>
+        <div mat-card-avatar class="feature-icon">
+          <mat-icon color="primary">{{ feature.icon }}</mat-icon>
+        </div>
+        <mat-card-title>{{ feature.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ feature.description }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<section class="cta">
+  <mat-card>
+    <mat-card-content>
+      <h3>Ready to build an alternate storyline?</h3>
+      <p>Upload your manuscript, craft a scenario, and let the adaptor generate a chapter-by-chapter comparison you can review side-by-side.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" routerLink="/upload">
+        <mat-icon>rocket_launch</mat-icon>
+        <span>Get Started</span>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

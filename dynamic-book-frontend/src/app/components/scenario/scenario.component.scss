@@ -1,0 +1,134 @@
+.scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+
+  .title-group {
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    p {
+      margin: 4px 0 0;
+      opacity: 0.7;
+    }
+  }
+
+  .export-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+.scenario-card {
+  margin-bottom: 24px;
+
+  mat-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+.scenario-input textarea {
+  resize: vertical;
+}
+
+.story-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.story-card {
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .story-content {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 16px;
+    padding: 12px 0;
+    position: relative;
+
+    mat-progress-spinner {
+      align-self: center;
+      margin-top: 32px;
+    }
+
+    pre {
+      width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      font-family: 'Roboto Mono', Consolas, 'Courier New', monospace;
+      line-height: 1.5;
+    }
+
+    .placeholder {
+      margin: 0;
+      opacity: 0.7;
+      text-align: center;
+    }
+  }
+}
+
+.navigation {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    button mat-icon:first-child {
+      margin-right: 6px;
+    }
+
+    button mat-icon:last-child {
+      margin-left: 6px;
+    }
+
+    .chapter-indicator {
+      font-weight: 500;
+    }
+  }
+}
+
+.empty-state {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+
+  mat-card-actions {
+    justify-content: center;
+
+    button mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .scenario-header .title-group h1 {
+    font-size: 22px;
+  }
+}
