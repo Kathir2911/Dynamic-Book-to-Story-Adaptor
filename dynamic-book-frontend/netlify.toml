@@ -1,8 +1,12 @@
 [build]
-  command = "npm run build --prod"
+  base = "dynamic-book-frontend"
+  command = "npm install && npm run build -- --configuration production"
   publish = "dist/dynamic-book-frontend"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build.environment]
+  NODE_VERSION = "16"
