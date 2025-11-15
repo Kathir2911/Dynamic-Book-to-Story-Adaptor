@@ -1,5 +1,5 @@
 [build]
-  base = "dynamic-book-frontend"
+  base = "."
   command = "npm install && npm run build -- --configuration production"
   publish = "dist/dynamic-book-frontend"
 
